@@ -13,6 +13,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     // UI tableView
     @IBOutlet weak var tableView: UITableView!
     
+    // array of dictionaries, initialized
+    var movies: [[String: Any]] = []
+    
     
     // default func
     override func viewDidLoad() {
@@ -36,15 +39,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 // receives data from url and we make it a json object
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 // Now we extract the movies from the json object
-                let movies = dataDictionary["results"] as! [[String: Any]]
-                
-                // Display each movie in the console
-                for movie in movies {
-                    let title = movie["title"] as! String
-                    print(title)
-                }
-                
-                // print(dataDictionary)
+                self.movies = dataDictionary["results"] as! [[String: Any]]
+                // table view is set up faster than request gets returned, so let's reload!
+                self.tableView.reloadData()
             }
         }
         // Start the task to get the info!
@@ -54,12 +51,19 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     // UITableViewDataSource required func
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return movies.count;
     }
     
     // UITableViewDataSource required func
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
+        
+        let movie = movies[indexPath.row]
+        let title = movie["title"] as! String
+        let overview = movie["overview"] as! String
+        cell.titleLabel.text = title
+        cell.overviewLabel.text = overview
         return cell
     }
     
