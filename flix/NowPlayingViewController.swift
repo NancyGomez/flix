@@ -16,16 +16,28 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     // array of dictionaries, initialized
     var movies: [[String: Any]] = []
-    
+    var refreshControl: UIRefreshControl!
     
     // default func
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
+        
         // We will provide the data for the table view
+        tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
         
-        // API REQUEST -----> {
+        fetchNowPlaying()
+        
+    }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchNowPlaying()
+    }
+    
+    func fetchNowPlaying() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -43,11 +55,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 self.movies = dataDictionary["results"] as! [[String: Any]]
                 // table view is set up faster than request gets returned, so let's reload!
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         // Start the task to get the info!
         task.resume()
-        // } <------- END API REQUEST
     }
     
     // UITableViewDataSource required func
@@ -81,6 +93,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
 }
