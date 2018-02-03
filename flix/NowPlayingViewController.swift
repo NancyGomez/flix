@@ -13,6 +13,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     // UI tableView
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // array of dictionaries, initialized
     var movies: [[String: Any]] = []
@@ -38,6 +39,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     }
     
     func fetchNowPlaying() {
+        // Start dat circle YEET
+        activityIndicator.startAnimating()
+        
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -84,6 +88,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         cell.posterImageView.af_setImage(withURL: posterURL)
+        
+        // Stop dat circle YEET
+        activityIndicator.stopAnimating()
         
         return cell
     }
