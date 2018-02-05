@@ -29,15 +29,16 @@ The following **additional** user stories are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. I think I'd like to discuss pop ups for when a movie is clicked.
-2. I'd also like to optimize size of table cells   
+2. I'd also like to optimize size of table cells
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.gyazo.com/4c668113f2679ac0371f1ced3aa8256c.gif' title='Launching' width='' alt='Launching' />
 
-<img src='https://i.gyazo.com/f77f63b0469ded2b6ef6ec42179e5d85.gif' title='Scrolling and Refreshing' width='' alt='Scrolling and Refreshing' />
+![alt text](https://i.gyazo.com/4c668113f2679ac0371f1ced3aa8256c.gif "Launchng")
+![alt text](https://i.gyazo.com/f77f63b0469ded2b6ef6ec42179e5d85.gif "Scrolling and Refreshing")
+
 
 GIF created with [GyazoGIF](https://gyazo.en.softonic.com/).
 
