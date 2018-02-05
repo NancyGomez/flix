@@ -36,8 +36,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 
-![alt text](https://i.gyazo.com/4c668113f2679ac0371f1ced3aa8256c.gif "Launchng")
-![alt text](https://i.gyazo.com/f77f63b0469ded2b6ef6ec42179e5d85.gif "Scrolling and Refreshing")
+![Launching](https://i.gyazo.com/4c668113f2679ac0371f1ced3aa8256c.gif "Launchng")
+![Scrolling and Refreshing](https://i.gyazo.com/f77f63b0469ded2b6ef6ec42179e5d85.gif "Scrolling and Refreshing")
 
 
 GIF created with [GyazoGIF](https://gyazo.en.softonic.com/).
