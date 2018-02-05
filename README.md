@@ -35,7 +35,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.gyazo.com/4c668113f2679ac0371f1ced3aa8256c.gif' title='Launching' width='' alt='Launching' /> <img src='https://gyazo.com/f77f63b0469ded2b6ef6ec42179e5d85' title='Scrolling and Refreshing' width='' alt='Scrolling and Refreshing' />
+<img src='https://i.gyazo.com/4c668113f2679ac0371f1ced3aa8256c.gif' title='Launching' width='' alt='Launching' />
+
+<img src='https://i.gyazo.com/f77f63b0469ded2b6ef6ec42179e5d85.gif' title='Scrolling and Refreshing' width='' alt='Scrolling and Refreshing' />
 
 GIF created with [GyazoGIF](https://gyazo.en.softonic.com/).
 
