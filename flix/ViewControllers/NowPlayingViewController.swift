@@ -72,7 +72,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let cell = sender as! UITableViewCell
         if let indexPath = tableView.indexPath(for: cell) {
             let movie = movies[indexPath.row]
-            print(movie)
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.movie = movie
         }
