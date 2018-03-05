@@ -42,29 +42,12 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         // Start dat circle YEET
         activityIndicator.startAnimating()
         
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
-        
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            // this will run when the network request returns
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let data = data {
-                // receives data from url and we make it a json object
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                let dictionaries = dataDictionary["results"] as! [[String: Any]]
-                // Now we extract the movies from the json object
-                self.movies = Movie.movies(dictionaries: dictionaries)
-                // table view is set up faster than request gets returned, so let's reload!
+        MovieApiManager().nowPlayingMovies { (movies: [Movie]?, error: Error?) in
+            if let movies = movies {
+                self.movies = movies
                 self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
             }
         }
-        // Start the task to get the info!
-        task.resume()
     }
     
     // UITableViewDataSource required func
