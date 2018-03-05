@@ -77,16 +77,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        let movie = movies[indexPath.row]
-        
-        let title = movie.title
-        let overview = movie.overview
-        
-        cell.titleLabel.text = title
-        cell.overviewLabel.text = overview
-        
-        cell.posterImageView.af_setImage(withURL: movie.posterUrl!)
-        
+        cell.movie = movies[indexPath.row]
+    
         // Stop dat circle YEET
         activityIndicator.stopAnimating()
         
