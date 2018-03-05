@@ -126,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				B87C2E6E202454C300123E3A /* MovieCell.swift */,
+				B8162003204CF30C00197E74 /* Movie.swift */,
 				B823B4F02030E50A006CE3E4 /* PosterCell.swift */,
 			);
 			path = Views;
@@ -163,7 +164,6 @@
 				B8E983902022777B00F2EE4D /* Assets.xcassets */,
 				B8E983922022777B00F2EE4D /* LaunchScreen.storyboard */,
 				B8E983952022777B00F2EE4D /* Info.plist */,
-				B8162003204CF30C00197E74 /* Movie.swift */,
 			);
 			path = flix;
 			sourceTree = "<group>";

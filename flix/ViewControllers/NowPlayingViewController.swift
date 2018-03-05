@@ -16,7 +16,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // array of dictionaries, initialized
-    var movies: [[String: Any]] = []
+    var movies: [Movie] = []
     var refreshControl: UIRefreshControl!
     
     // default func
@@ -55,8 +55,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
             } else if let data = data {
                 // receives data from url and we make it a json object
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                let dictionaries = dataDictionary["results"] as! [[String: Any]]
                 // Now we extract the movies from the json object
-                self.movies = dataDictionary["results"] as! [[String: Any]]
+                self.movies = []
+                for dictionary in dictionaries {
+                    let movie = Movie(dictionary: dictionary)
+                    self.movies.append(movie)
+                }
                 // table view is set up faster than request gets returned, so let's reload!
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
@@ -77,17 +82,14 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
         let movie = movies[indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        let posterPathStr = movie["poster_path"] as! String
         
-        
-        let baseURLStr = "https://image.tmdb.org/t/p/w500"
-        let posterURL = URL(string: baseURLStr + posterPathStr)!
+        let title = movie.title
+        let overview = movie.overview
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
-        cell.posterImageView.af_setImage(withURL: posterURL)
+        
+        cell.posterImageView.af_setImage(withURL: movie.posterUrl!)
         
         // Stop dat circle YEET
         activityIndicator.stopAnimating()
@@ -99,6 +101,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let cell = sender as! UITableViewCell
         if let indexPath = tableView.indexPath(for: cell) {
             let movie = movies[indexPath.row]
+            print(movie)
             let detailViewController = segue.destination as! DetailViewController
             detailViewController.movie = movie
         }
