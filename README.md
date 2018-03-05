@@ -232,45 +232,44 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-# Lab 5 - *Name of App Here*
+# Lab 5 - *Flix*
 
-**Name of your app** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+**Flix** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **7** hours spent in total
 
 ## User Stories
 
 The following **required** user stories are complete:
 
-- [ ] Create a movie model (+2pt)
-- [ ] Implement the movie model (+2pt)
-- [ ] Implement property observers (+2pt)
-- [ ] Create a basic API Client (+2pt)
+- [x] Create a movie model (+2pt)
+- [x] Implement the movie model (+2pt)
+- [x] Implement property observers (+2pt)
+- [x] Create a basic API Client (+2pt)
 
 The following **additional** user stories are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality! (+1-3pts)
+- [x] List anything else that you can get done to improve the app functionality! (+1-3pts)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. To improve this application, it would be interesting if you could add a sorting capability. Not just superheroes, but also ratings, genres, and so on. This will allow for the user to have an easier time looking through the types of movies they'd like to watch.
+2. We could also expand on the detail view by retrieving the show times for this movie at the nearest movie theater (this means we would have to access location). This would be useful for the user since the click on the movie likely means they are interested in watching it.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.gyazo.com/a4eaddb8c31a7019dd0d4bd1c81d2569.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+There was really only a challenge with the initial implementation of the Movie model since it involved changing a lot of code at once to know if it worked. We ended up making a default constructor in order to use it, and gave the urls empty strings which caused our app to crash. We then gave it a url to a red image to see if that was the issue and it was.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2018] [Nancy and Carlos]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
