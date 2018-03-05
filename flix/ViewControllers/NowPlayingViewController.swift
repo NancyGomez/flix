@@ -57,11 +57,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 let dictionaries = dataDictionary["results"] as! [[String: Any]]
                 // Now we extract the movies from the json object
-                self.movies = []
-                for dictionary in dictionaries {
-                    let movie = Movie(dictionary: dictionary)
-                    self.movies.append(movie)
-                }
+                self.movies = Movie.movies(dictionaries: dictionaries)
                 // table view is set up faster than request gets returned, so let's reload!
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
